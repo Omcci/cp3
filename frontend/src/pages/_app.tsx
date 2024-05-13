@@ -1,7 +1,9 @@
-import "@/styles/globals.css";
-import { ApolloClient, ApolloProvider } from "@apollo/client";
+import Layout from "@/components/Layout";
+import { ApolloProvider } from "@apollo/client";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
+import "../styles/globals.css"
+
 
 import createApolloClient from "./apollo-client";
 
@@ -11,7 +13,9 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ApolloProvider>
   )
 }

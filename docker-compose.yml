@@ -14,7 +14,7 @@ services:
     environment:
       - WDS_SOCKET_HOST=127.0.0.1
       - CHOKIDAR_USEPOLLING=true
-      - WATCHPACK_POLLING=true=value
+      - WATCHPACK_POLLING=true
     stop_grace_period: 0s
     build: 
       context: ./frontend

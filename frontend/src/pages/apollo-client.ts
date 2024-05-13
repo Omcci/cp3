@@ -9,7 +9,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 const createApolloClient = () => {
   if (!apolloClient) {
     apolloClient = new ApolloClient({
-      uri: "/api",
+      uri: "http://localhost:4000/graphql",
       cache: new InMemoryCache(),
     });
   }

@@ -1,35 +1,39 @@
+import { GetCountriesQuery, GetCountriesQueryVariables } from "@/graphql/generated/schema";
 import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
 import React from 'react';
 
-export const CountryList = () => {
-
-    const GET_COUNTRIES = gql`
+export const GET_COUNTRIES = gql`
     query GetCountries {
         countries {
           id
           name
           emoji
+          code
         }
       }
     `;
-
-    const { loading, error, data } = useQuery(GET_COUNTRIES);
-
+export const CountryList = () => {
+    const { loading, error, data, refetch } = useQuery<GetCountriesQuery>(GET_COUNTRIES);
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
 
     return (
-        <div>
-            {data.countries.map(({ code, name, emoji }: { code: string; name: string; emoji: string }) => (
-                <div key={code} className="mb-4">
-                    <Link href={`/countries/${code}`}>
-                        <a className="text-lg">
-                            {emoji} {name}
-                        </a>
-                    </Link>
-                </div>
-            ))}
+        <div className="bg-white shadow overflow-hidden sm:rounded-md p-4 mt-3">
+            <h2 className="text-2xl font-bold leading-tight text-gray-900 mb-4">List of Countries</h2>
+
+            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {data && data.countries.map((country) => (
+                    <li key={country.id} className="hover:bg-gray-50 transition duration-300 ease-in-out rounded-md">
+                        <Link href={`/countries/${country.code}`}>
+                            <div className="flex items-center space-x-4 p-4">
+                                <span className="text-2xl">{country.emoji}</span>
+                                <span className="font-medium text-gray-900">{country.name}</span>
+                            </div>
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
