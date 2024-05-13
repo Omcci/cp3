@@ -27,7 +27,7 @@ const Home: NextPage = () => {
             &#10095; <span className="sr-only">Add Country</span>
           </button>
           <AddCountry isVisible={isFormVisible} toggleVisibility={toggleFormVisibility} refetchCountries={handleRefetch} />
-          <div className="ml-80">
+          <div className="xs:ml-20 sm:ml-30 md:ml-50 lg:ml-80">
             <CountryList />
           </div>
         </div>

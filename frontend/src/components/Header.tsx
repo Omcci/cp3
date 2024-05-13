@@ -7,7 +7,6 @@ export default function Header() {
         <h1 className="text-lg sm:text-2xl font-bold">Checkpoint : Frontend</h1>
         <Link href="/">
           Countries
-
         </Link>
       </div>
     </header>

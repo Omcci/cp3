@@ -32,8 +32,6 @@ const CountryDetails = () => {
   if (loading) return <p>Loading...</p>;
   if (error as Error) return <p>Error: {error?.message}</p>;
 
-
-
   return (
     <div className="flex flex-col justify-center items-center">
       {loading && <p className="text-2xl">Loading...</p>}
@@ -59,7 +57,6 @@ const CountryDetails = () => {
       )}
     </div>
   );
-
 };
 
 export default CountryDetails;

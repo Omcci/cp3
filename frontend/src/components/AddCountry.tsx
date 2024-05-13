@@ -1,4 +1,3 @@
-// components/AddCountry.tsx
 import { AddCountryMutation } from '@/graphql/generated/schema';
 import { gql, useMutation } from '@apollo/client';
 import { useState } from 'react';
